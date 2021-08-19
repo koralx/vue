@@ -1,36 +1,47 @@
 <template>
   <div>
-    <form action="">
-      <h4>Создание поста</h4>
-      <input class="input" type="text" placeholder="Название">
-      <input class="input" type="text" placeholder="Описание">
-      <button class="btn" @click="createPost">Создать</button>
-    </form>
-    <div class="post" v-for="post in posts" :key="post.id" >
-      <div>Название: {{post.title}}</div>
-      <div>Описание: {{post.body}}</div>
-    </div>
+    <post-form/>
+    <post-list  :posts="posts"/>
   </div>
 </template>
 
 <script>
+import PostList from '@/components/PostList';
+import PostForm from './components/PostForm';
+
 export default {
+  components: {
+    PostList, PostForm
+  },
   data() {
     return {
       posts: [
         {id: 1, title: 'React', body: 'About post 1'},
         {id: 2, title: 'Js', body: 'About post 2'},
         {id: 3, title: 'Vue', body: 'About post 3'}
-      ]
+      ],
+      body: "",
+      title: ""
     }
   },
-  methods: { 
+  methods: {
+    createPost() {
+      const newPost = {
+        id: Date.now(),
+        title: this.title,
+        body: this.body
+      }
+      this.posts.push(newPost)
+      this.title = ''
+      this.body = ''
+    }
   }
 }
 </script>
 
 <style>
 * {
+  resize: none;
   font-weight: 500;
   font-size: 18px;
   font-family: 'Courier New', Courier, monospace;
@@ -38,15 +49,4 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
-
-.post {
-  display: block;
-  width: 20%;
-  height: 250px;
-  padding: 25px;
-  margin: 15px;
-  border: 1px solid grey;
-  border-radius: 15px;
-}
-
 </style>
