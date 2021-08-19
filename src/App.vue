@@ -1,30 +1,52 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div>
+    <form action="">
+      <h4>Создание поста</h4>
+      <input class="input" type="text" placeholder="Название">
+      <input class="input" type="text" placeholder="Описание">
+      <button class="btn" @click="createPost">Создать</button>
+    </form>
+    <div class="post" v-for="post in posts" :key="post.id" >
+      <div>Название: {{post.title}}</div>
+      <div>Описание: {{post.body}}</div>
+    </div>
   </div>
-  <router-view/>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      posts: [
+        {id: 1, title: 'React', body: 'About post 1'},
+        {id: 2, title: 'Js', body: 'About post 2'},
+        {id: 3, title: 'Vue', body: 'About post 3'}
+      ]
+    }
+  },
+  methods: { 
+  }
+}
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+* {
+  font-weight: 500;
+  font-size: 18px;
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-#nav {
-  padding: 30px;
+.post {
+  display: block;
+  width: 20%;
+  height: 250px;
+  padding: 25px;
+  margin: 15px;
+  border: 1px solid grey;
+  border-radius: 15px;  
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
