@@ -10,12 +10,16 @@
         v-model="post.body"
         class="input-body" 
         placeholder="Описание"></textarea>
-      <button class="btn" @click="createPost">Создать</button>
+      <click-button style="margin-top: 15px; align-self: flex-end;" @click="createPost">Создать</click-button>
     </form>
 </template>
 
 <script>
+import clickButton from '@/components/UI/clickButton'
 export default {
+  components: {
+    clickButton
+  },
   data() {
     return {
       post: {
@@ -65,16 +69,6 @@ input[type=text] {
   border-top: 1px black solid;
   border-left: 1px black solid;
   padding: 5px;
-}
-
-.btn {
-  align-self: flex-end;
-  width: 150px;
-  transition: ease .2s;
-  background: none;
-  border: 1px black solid;
-  padding: 5px;
-  margin-top: 15px;
 }
 
 .btn:hover {

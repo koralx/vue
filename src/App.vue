@@ -1,14 +1,11 @@
 <template>
-  <div>
-    <post-form @create="createPost"/>
-    <post-list :posts="posts"/>
-  </div>
+  <post-form @create="createPost" />
+  <post-list :posts="posts" />
 </template>
 
 <script>
 import PostList from '@/components/PostList';
-import PostForm from './components/PostForm';
-
+import PostForm from '@/components/PostForm';
 export default {
   components: {
     PostList, PostForm
