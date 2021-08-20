@@ -1,11 +1,11 @@
 <template>
     <form @submit.prevent >
       <h4>Создание поста</h4>
-      <input 
+      <text-input 
         v-model="post.title"
         class="input-title" 
         type="text" 
-        placeholder="Название">
+        placeholder="Название"/>
       <textarea 
         v-model="post.body"
         class="input-body" 
@@ -15,11 +15,7 @@
 </template>
 
 <script>
-import clickButton from '@/components/UI/clickButton'
 export default {
-  components: {
-    clickButton
-  },
   data() {
     return {
       post: {
@@ -53,15 +49,6 @@ form {
   width: 500px;
 }
 
-input[type=text] {
-  width: 50%;
-  border: 0px black solid;
-  border-bottom: 1px black solid;
-  margin-bottom: 5px;
-  outline: none;
-  padding: 5px 5px 5px 0;
-}
-
 .input-body {
   outline: none;
   height: 100px;
@@ -69,11 +56,6 @@ input[type=text] {
   border-top: 1px black solid;
   border-left: 1px black solid;
   padding: 5px;
-}
-
-.btn:hover {
-  background: black;
-  color: white;
 }
 
 </style>
