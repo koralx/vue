@@ -5,7 +5,7 @@
          <div>Описание: {{post.body}}</div>
       </div>
       <div style="align-self: center;">
-         <click-button >Удалить</click-button>
+         <click-button @click="$emit('remove', post)">Удалить</click-button>
       </div>
    </div>
 </template>
@@ -24,8 +24,8 @@ export default {
 <style scoped>
 .post {
   display: flex;
-  width: 100%;
-  height: 150px;
+  width: 96vw;
+  min-height: 200px;
   padding: 15px;
   margin: 15px;
   border: 2px solid black;
