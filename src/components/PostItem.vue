@@ -4,8 +4,8 @@
          <div>Название: {{post.title}}</div>
          <div>Описание: {{post.body}}</div>
       </div>
-      <div style="align-self: center;">
-         <click-button @click="$emit('remove', post)">Удалить</click-button>
+      <div style="align-self: flex-start;">
+         <click-button @click="$emit('remove', post)">X</click-button>
       </div>
    </div>
 </template>
@@ -24,12 +24,18 @@ export default {
 <style scoped>
 .post {
   display: flex;
-  width: 96vw;
-  min-height: 200px;
-  padding: 15px;
-  margin: 15px 0;
-  border: 2px solid black;
-  border-radius: 5px;
   justify-content: space-between;
+  align-items: flex-start; 
+
+  width: 97vw;
+  min-height: 200px;
+
+  padding: 15px;
+  margin: 2vh 1vw;
+
+  border: 2px solid black;
+  border-radius: 15px;
+  
+  font-size: 20px;
 }
 </style>
