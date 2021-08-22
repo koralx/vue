@@ -27,7 +27,7 @@ export default {
   width: 96vw;
   min-height: 200px;
   padding: 15px;
-  margin: 15px;
+  margin: 15px 0;
   border: 2px solid black;
   border-radius: 5px;
   justify-content: space-between;

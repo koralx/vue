@@ -12,11 +12,12 @@ export default {
 
 <style scoped>
 .btn {
-  width: 150px;
+  min-width: 100px;
   transition: ease .2s;
   background: none;
   border: 1px black solid;
   padding: 5px;
+  font-size: 16px;
 }
 
 .btn:hover {

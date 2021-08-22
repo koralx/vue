@@ -24,5 +24,6 @@ input[type=text] {
   margin-bottom: 5px;
   outline: none;
   padding: 5px 5px 5px 0;
+  font-size: 16px;
 }
 </style>

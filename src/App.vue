@@ -1,32 +1,47 @@
 <template>
-  <post-form @create="createPost" />
+  <div style="margin: 15px 0">
+    <click-button @click="fecthPosts" >Получить посты</click-button>
+    <h1>Список постов</h1>
+    <click-button @click="showDialog" >Создать пост</click-button>
+  </div>
+  <modal-dialog v-model:show="dialogVisible" >
+    <post-form @create="createPost" />
+  </modal-dialog>
   <post-list @remove="removePost" :posts="posts" />
 </template>
 
 <script>
 import PostList from '@/components/PostList';
 import PostForm from '@/components/PostForm';
+import axios from 'axios'
 export default {
   components: {
     PostList, PostForm
   },
   data() {
     return {
-      posts: [
-        {id: 1, title: 'React', body: 'About post 1 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'},
-        {id: 2, title: 'Js', body: 'About post 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'},
-        {id: 3, title: 'Vue', body: 'About post 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'}
-      ],
-      body: "",
-      title: ""
+      posts: [],
+      dialogVisible: false,
     }
   },
   methods: {
     createPost(post) {
-      this.posts.push(post)
+      this.posts.push(post);
+      this.dialogVisible = false;
     },
     removePost(post) {
       this.posts = this.posts.filter(p=> p.id !== post.id)
+    },
+    showDialog(){
+      this.dialogVisible = true;
+    },
+    async fecthPosts() {
+      try {
+        const response = await axios.get('https://jsonplaceholder.typicode.com/posts?_limit=10')
+        this.posts = response.data;
+      } catch (e) {
+        alert('Ошибка')
+      }
     }
   }
 }
@@ -35,11 +50,12 @@ export default {
 <style>
 * {
   resize: none;
-  font-weight: 500;
-  font-size: 18px;
   font-family: 'Courier New', Courier, monospace;
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
   box-sizing: border-box;
+}
+#app {
+ margin: 15px;
 }
 </style>

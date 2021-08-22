@@ -1,6 +1,6 @@
 <template>
     <form @submit.prevent >
-      <h4>Создание поста</h4>
+      <h2>Создание поста</h2>
       <text-input 
         v-model="post.title"
         class="input-title" 
@@ -43,7 +43,6 @@ form {
   display: flex;
   flex-direction: column;
   border-radius: 5px;
-  border: 2px solid black;
   padding: 15px;
   margin: 15px;
   width: 500px;
